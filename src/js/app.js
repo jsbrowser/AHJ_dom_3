@@ -113,7 +113,10 @@ const dynamicSort = (property) => {
     sortOrder = -1;
     prop = prop.substr(1);
   }
-  const funct = (a, b) => ((a[prop] < b[prop]) ? -1 : (a[prop] > b[prop]) ? 1 : 0) * sortOrder;
+  return function funct(a, b) {
+    const result = (a[prop] < b[prop]) ? -1 : (a[prop] > b[prop]) ? 1 : 0;
+    return result * sortOrder;
+  };
 };
 
 const sortRows = (data) => {
